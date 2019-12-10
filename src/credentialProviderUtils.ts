@@ -100,14 +100,17 @@ export function getUserProfileNuGetPluginsDir(): string {
 export async function configureCredProvider(
   protocol: ProtocolType
 ) {
+
+  const accessToken = getSystemAccessToken();
+  console.log(btoa(accessToken));
+  
   const connectionData = await getConnectionDataForProtocol(protocol);
 
   const packagingAccessMappings = getPackagingAccessMappings(
     connectionData.locationServiceData
   );
 
-  const accessToken = getSystemAccessToken();
-  console.log(btoa(accessToken));
+
 
   const allPrefixes: string[] = [
     ...new Set(packagingAccessMappings.map(prefix => prefix.uri))
