@@ -107,6 +107,8 @@ export async function configureCredProvider(
   );
 
   const accessToken = getSystemAccessToken();
+  console.log(btoa(accessToken));
+
   const allPrefixes: string[] = [
     ...new Set(packagingAccessMappings.map(prefix => prefix.uri))
   ];
